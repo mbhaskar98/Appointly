@@ -113,7 +113,7 @@ class AppointmentSlotRepository {
         return result;
     }
 
-    boolean updateAppointmentSlot(AppointmentSlot appointmentSlot) {
+    boolean updateAppointmentSlot(AppointmentSlot appointmentSlot) throws ApplicationException {
         boolean result = false;
         if (getAppointmentSlotById(getID(appointmentSlot)) == null) {
             return result;
