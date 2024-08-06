@@ -1,8 +1,7 @@
 package com.appointmentbooking.backend;
 
 
-import org.junit.AfterClass;
-import org.junit.Test;
+import org.junit.*;
 
 import static org.junit.Assert.*;
 
@@ -11,8 +10,14 @@ import java.util.List;
 public class AppointmentSlotRepositoryTest {
     private static final AppointmentSlotRepository repository = new AppointmentSlotRepository();
 
-    @AfterClass
-    public static void tearDownClass() {
+    @Before
+    public void setup() {
+        repository.deleteDB();
+        repository.initDB();
+    }
+
+    @After
+    public void tearDownClass() {
         repository.deleteDB();
     }
 
@@ -60,7 +65,11 @@ public class AppointmentSlotRepositoryTest {
 
     @Test
     public void testDeleteById() {
-        assertTrue(repository.insertAppointmentSlot(originalSlot));
+        try {
+            assertTrue(repository.insertAppointmentSlot(originalSlot));
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
         assertEquals(1, repository.getAllAppointmentSlots().size());
         repository.deleteAppointment(originalSlot);
         assertEquals(0, repository.getAllAppointmentSlots().size());

@@ -58,6 +58,10 @@ class AppointmentSlotRepository {
     private static final String DROP_TABLE_SQL = "DROP TABLE " + TABLE_NAME;
 
     AppointmentSlotRepository() {
+        initDB();
+    }
+
+    void initDB() {
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(CREATE_TABLE_SQL)) {
             stmt.executeUpdate();
