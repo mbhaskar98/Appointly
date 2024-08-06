@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Map;
 
 public class HomeScreen extends NavigationScreen implements Navigationable {
     private JLabel welcomeMessage;
@@ -30,22 +29,10 @@ public class HomeScreen extends NavigationScreen implements Navigationable {
     @Override
     public void setupScreen(JPanel appContainerPanel,
                             String parentPanelName,
-                            String childPanelName,
-                            Map<String, Navigationable> screens) {
+                            String childPanelName) {
         this.appContainerPanel = appContainerPanel;
         this.parentPanelName = parentPanelName;
         this.childPanelName = childPanelName;
-        this.screens = screens;
-    }
-
-    @Override
-    public void repaint() {
-        setupScreen(
-                appContainerPanel,
-                parentPanelName,
-                childPanelName,
-                screens
-        );
     }
 
     @Override

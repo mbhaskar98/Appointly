@@ -7,10 +7,6 @@ public class AppointmentSlotService {
     /* Can use dependency injection to provide repository object in future in order to unit test this service*/
     private final AppointmentSlotRepository repository = new AppointmentSlotRepository();
 
-    public AppointmentSlot getAppointmentById(String id) {
-        return repository.getAppointmentSlotById(id);
-    }
-
     public List<AppointmentSlot> getAllAppointments() {
         List<AppointmentSlot> appointmentSlots = repository.getAllAppointmentSlots();
         Collections.sort(appointmentSlots);
@@ -41,18 +37,13 @@ public class AppointmentSlotService {
         int newSlotStartTime = newAppointmentSlot.startTime();
         int newSlotEndTime = newAppointmentSlot.endTime();
         for (AppointmentSlot appointmentSlot : appointmentSlots) {
-            // Same slot
-            if (newSlotStartTime == appointmentSlot.startTime() && newSlotEndTime == appointmentSlot.endTime())
-                continue;
-
-            // Check if overlap
             if ((appointmentSlot.startTime() <= newSlotStartTime && newSlotStartTime < appointmentSlot.endTime()) ||
                     appointmentSlot.startTime() < newSlotEndTime && newSlotEndTime <= appointmentSlot.endTime()) {
                 throw new ApplicationException("Overlapping appointment");
             }
         }
     }
-
+    
     public String getID(AppointmentSlot appointmentSlot) {
         return repository.getID(appointmentSlot);
     }

@@ -21,11 +21,6 @@ public record AppointmentSlot(int startTime,
     }
 
     public AppointmentSlot(int startTime,
-                           int endTime) {
-        this(startTime, endTime, "", "", true);
-    }
-
-    public AppointmentSlot(int startTime,
                            int endTime,
                            String patientName,
                            String description) {

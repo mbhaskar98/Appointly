@@ -1,7 +1,6 @@
 package com.appointmentbooking.Screens;
 
 import javax.swing.*;
-import java.util.Map;
 
 public interface Navigationable {
 
@@ -9,8 +8,5 @@ public interface Navigationable {
 
     public void setupScreen(JPanel appContainerPanel,
                             String parentPanelName,
-                            String childPanelName,
-                            Map<String, Navigationable> screens);
-
-    public void repaint();
+                            String childPanelName);
 }
