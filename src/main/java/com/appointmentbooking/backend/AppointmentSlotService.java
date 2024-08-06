@@ -43,5 +43,13 @@ public class AppointmentSlotService {
             }
         }
     }
+    
+    public String getID(AppointmentSlot appointmentSlot) {
+        return repository.getID(appointmentSlot);
+    }
+
+    void deleteDB() {
+        repository.deleteDB();
+    }
 
 }

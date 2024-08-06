@@ -15,7 +15,7 @@ public record AppointmentSlot(int startTime,
         if (startTime >= endTime) {
             throw new IllegalArgumentException("start time should be less than end time");
         }
-        if (patientName.isEmpty()) {
+        if (!isAvailable && patientName.isEmpty()) {
             throw new IllegalArgumentException("patient name can't be empty");
         }
     }
